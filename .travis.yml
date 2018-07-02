@@ -1,0 +1,12 @@
+sudo: required
+env: "IMAGE=centos:7"
+language: ruby
+rvm:
+  - 2.4.0
+before_install: gem install bundler --no-document
+cache: bundler
+script:
+  - rm -f ${HOME}/Test_*.txt
+  - bundle exec itamae local example/recipe.rb
+  - ls -lZ ${HOME}/Test*
+  - bundle exec rake spec
