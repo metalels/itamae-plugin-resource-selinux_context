@@ -1,8 +1,9 @@
 # Itamae::Plugin::Resource::SelinuxContext
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/itamae/plugin/resource/selinux_context`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build Status](https://travis-ci.org/metalels/itamae-plugin-resource-selinux_context.svg?branch=master)](https://travis-ci.org/metalels/itamae-plugin-resource-selinux_context)  
+[![Gem Version](https://badge.fury.io/rb/itamae-plugin-resource-selinux_context.svg)](https://badge.fury.io/rb/itamae-plugin-resource-selinux_context)  
 
-TODO: Delete this and the text above, and describe your gem
+
 
 ## Installation
 
@@ -22,7 +23,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+*Require* itamae execute by `root` or `sudoer` user.
+
+```ruby
+file "/tmp/test_file.txt" do
+  action :create
+  content "This is test text file."
+end
+
+selinux_context "/tmp/test_file.txt" do
+  context "unconfined_u:object_r:user_tmp_t:s0"
+end
+```
 
 ## Development
 
